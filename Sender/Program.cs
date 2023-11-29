@@ -36,8 +36,13 @@ namespace Sender
             string body = "Test";
             string subject = "Test Subject";
             MailMessage mail = new MailMessage(from.Address, to.Address, body, subject);
-            mail = AddAttachments(mail, attPath);
 
+
+            Console.WriteLine("Вы хотите прикрепить вложения???(y/n)");
+            char input = Console.ReadLine()[0];
+            if(input != 'n') {
+                mail = AddAttachments(mail, attPath);
+            }
             
             smtpClient.Send(mail);
         }
